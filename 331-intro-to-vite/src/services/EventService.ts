@@ -1,20 +1,19 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'https://my-json-server.typicode.com/Rattikan-P/Lab02-Vue-Dev-with-Vite-and-TS-db-',
+  baseURL: 'https://my-json-server.typicode.com/Rattikan-P/Lab02-03-Vue-Dev-with-Vite-and-TS-db',
   withCredentials: false,
   headers: {
-    Accept: 'application/json', 
-    'Content-Type': 'application/json'  
-  }
-});
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
+})
 
 export default {
-  getEvents() {
-    return apiClient.get('/events')
+  getEvents(perPage: Number, page: Number) {
+    return apiClient.get('events?_limit=' + perPage + '&_page=' + page)
   },
-  getEvent (id: String) {
+  getEvent(id: Number) {
     return apiClient.get('/events/' + id)
-  }
+  },
 }
-

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import EventStudent from '@/components/EventStudent.vue'
 import { ref, onMounted } from 'vue'
-import type { Student } from '@/type'
+import type { Student } from '@/types'
 import StudentService from '@/services/StudentService'
 
 const students = ref<Student[]>([])
@@ -21,8 +21,7 @@ onMounted(() => {
 <template>
   <h1>Our Students</h1>
   <div class="student">
-    <EventStudent v-for="student in students" :key="student.id" :student="student"
-    />
+    <EventStudent v-for="student in students" :key="student.id" :student="student" />
   </div>
 </template>
 

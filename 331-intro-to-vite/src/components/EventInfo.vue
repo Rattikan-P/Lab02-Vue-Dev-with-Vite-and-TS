@@ -18,8 +18,8 @@ const props = defineProps<{
 .event-info {
   display: flex;
   flex-direction: column;
-  align-items: flex-end; 
-  margin-top: 10px; 
+  align-items: flex-end;
+  margin-top: 10px;
 }
 
 .category,

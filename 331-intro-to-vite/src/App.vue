@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import EventCard from './components/EventCard.vue';
+import EventCard from './components/EventCard.vue'
 </script>
 
 <template>
@@ -18,7 +18,6 @@ import EventCard from './components/EventCard.vue';
     <RouterView />
   </div>
 </template>
-
 
 <style>
 #layout {
@@ -48,5 +47,3 @@ h2 {
   font-size: 20px;
 }
 </style>
-
-

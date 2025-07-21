@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { Event } from '@/type'
+import { type Event } from '@/types'
 import EventInfo from './EventInfo.vue'
 defineProps<{
   event: Event
 }>()
 // const event = ref ({
 //   id: 5928101,
-//   category: 'animal welfare',
+//   category: 'animal  welfare',
 //   title: 'Cat Adoption Day',
 //   description: 'Find your new feline friend at this event.',
 //   location: 'Meow Town',
@@ -18,7 +18,7 @@ defineProps<{
 </script>
 
 <template>
-  <RouterLink class="event-link" :to="{ name: 'event-detail-view', params: { id: event.id }}">
+  <RouterLink class="event-link" :to="{ name: 'event-detail-view', params: { id: event.id } }">
     <div class="event-card">
       <h2>{{ event.title }}</h2>
       <span>@{{ event.time }} on {{ event.date }}</span>

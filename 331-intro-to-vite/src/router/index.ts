@@ -9,13 +9,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'event-list-view',
-      component: EventListView
+      component: EventListView,
+      props: (route) => ({
+        page: parseInt(route.query.page?.toString() || '1'),
+        pageSize: parseInt(route.query.pageSize?.toString() || '2'),
+      }),
     },
     {
       path: '/event/:id',
       name: 'event-detail-view',
       component: EventDetailView,
-      props: true
+      props: true,
     },
     {
       path: '/about',
@@ -23,12 +27,12 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: AboutView
+      component: AboutView,
     },
-    { 
-      path: '/students', 
+    {
+      path: '/students',
       name: 'student-list',
-      component: StudentListView 
+      component: StudentListView,
     },
   ],
 })
