@@ -3,8 +3,10 @@ import EventCard from '@/components/EventCard.vue'
 import { type Event } from '@/types'
 import { ref, onMounted, computed, watchEffect } from 'vue'
 import EventService from '@/services/EventService.ts'
+import { useRouter } from 'vue-router'
 
 const events = ref<Event[] | null>(null)
+const router = useRouter
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
   const totalPages = Math.ceil(totalEvents.value / pageSize.value) //ceil -> ปัดเศษขึ้น
