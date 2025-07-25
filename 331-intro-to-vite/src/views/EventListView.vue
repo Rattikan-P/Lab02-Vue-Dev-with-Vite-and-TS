@@ -45,6 +45,9 @@ onMounted(() => {
   <div class="events">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
+  <div class="page-info">
+      Page {{ page }} of {{ Math.ceil(totalEvents / props.pageSize) }}
+    </div>
   <div class="page-size-links">
     <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 2 } }">2</RouterLink> |
     <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 4 } }">4</RouterLink> |
