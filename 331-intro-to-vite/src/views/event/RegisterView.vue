@@ -19,7 +19,7 @@ const register = () => {
   // Push back to the event details view
   // alert(`Registered for event: ${event.value.title}`)
   // console.log('Registered for event:', event.value.title)
-  store.updateMessage('You are successfully registered for ' + props.event.title)
+  store.updateMessage('☆ You are successfully registered for ' + props.event.title + ' ☆')
   setTimeout (() => {
     store.restMessage()
   }, 3000)

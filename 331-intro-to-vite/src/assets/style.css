@@ -1,3 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@tailwind base; /* (เช่น ฟอนต์เริ่มต้น, การตั้งค่าระยะห่าง, การปรับมุมมองของ HTML tags ฯลฯ) */
+@tailwind components; /* (กำหนดลักษณะส่วนประกอบต่างๆ เช่น ปุ่ม, การ์ด ฯลฯ ที่เป็นส่วนประกอบทั่วไป) */
+@tailwind utilities;/* (ปรับแต่งลักษณะ เช่น text-center, bg-blue-500, p-4 ) */
+
+h1 {
+    /* ทำให้ทุกๆ <h1> ใน HTML ที่มีขนาดฟอนต์ 4xl และมี margin-buttom 2rem (32px) โดยไม่ต้องเพิ่มคลาส text-4xl และ mb-8 ใน HTML โดยตรง */
+    @apply text-4xl mb-8
+}
