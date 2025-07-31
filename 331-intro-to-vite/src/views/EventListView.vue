@@ -6,7 +6,7 @@ import EventService from '@/services/EventService.ts'
 import { useRouter } from 'vue-router'
 
 const events = ref<Event[] | null>(null)
-const router = useRouter
+const router = useRouter()
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
   const totalPages = Math.ceil(totalEvents.value / pageSize.value)
@@ -32,7 +32,7 @@ onMounted(() => {
     EventService.getEvents(pageSize.value, page.value)
       .then((response) => {
         events.value = response.data
-        totalEvents.value = response.headers['x-total-count']
+        totalEvents.value = parseInt(response.headers['x-total-count']) || 0
       })
       .catch((error) => {
         console.error('There was an error!', error)
@@ -47,7 +47,7 @@ onMounted(() => {
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
   <div class="page-info">
-      Page {{ page }} of {{ Math.ceil(totalEvents / props.pageSize) }}
+      Page {{ page }} of {{ Math.ceil(totalEvents / pageSize) }}
     </div>
   <div class="my-[20px] text-center text-base font-medium text-[#2c3e50]">
     <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 2 } }"
