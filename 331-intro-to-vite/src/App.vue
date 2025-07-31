@@ -8,12 +8,13 @@ const { message } = storeToRefs(store)
 </script>
 
 <template>
-  
-  <div class="text-center font-sans text-gray-700 antialias">
+  <!-- 3.3 -->
+  <div class="text-center font-sans text-gray-700 antialias"> 
     <header>
       <div id="flashMessage" class="animate-fade" v-if="message">
         <h4>{{ message }}</h4>
       </div>
+      <h1>Deploy with Vercel</h1>
       <div class="wrapper">
         <nav class="py-6">
           <!-- py-6 เพิ่ม padding 24px บน-ล่างของ(top-bottom) element -->

@@ -12,14 +12,6 @@ import nProgress from 'nprogress'
 import EventService from '@/services/EventService'
 import { useEventStore } from '@/stores/event'
 
-// ✅ Config nprogress
-nProgress.configure({
-  showSpinner: true,
-  minimum: 0.2,
-  speed: 500,
-  trickleSpeed: 200
-})
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -123,9 +115,7 @@ router.beforeEach(() => {
 
 router.afterEach(() => {
   console.log('Progress Done!')
-  setTimeout(() => {
-    nProgress.done()
-  }, 300)
+  nProgress.done()
 })
 
 export default router
