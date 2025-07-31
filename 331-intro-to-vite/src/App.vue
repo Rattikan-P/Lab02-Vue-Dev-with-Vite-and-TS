@@ -3,7 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import EventCard from './components/EventCard.vue'
 import { useMessageStore } from './stores/message';
 import { storeToRefs } from 'pinia';
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from '@vercel/speed-insights/vue'
 const store = useMessageStore()
 const { message } = storeToRefs(store)
 </script>
