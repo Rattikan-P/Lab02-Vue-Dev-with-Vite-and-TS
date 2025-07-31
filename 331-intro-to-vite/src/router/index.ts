@@ -116,16 +116,13 @@ const router = createRouter({
   }
 })
 
-router.beforeEach((to, from) => {
-  console.log(`Route changing: ${from.name} → ${to.name}`)
+router.beforeEach(() => {
   console.log('Starting Progress...')
   nProgress.start()
 })
 
-router.afterEach((to, from) => {
-  console.log(`Route changed: ${from.name} → ${to.name}`)
+router.afterEach(() => {
   console.log('Progress Done!')
-  
   setTimeout(() => {
     nProgress.done()
   }, 300)
