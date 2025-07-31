@@ -20,7 +20,7 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     rollupOptions: {
-      external: ['nprogress/nprogress.css']
+      // external: ['nprogress/nprogress.css']
     }
   }
 }));
