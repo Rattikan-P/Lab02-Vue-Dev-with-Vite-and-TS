@@ -3,20 +3,27 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
+export default defineConfig(({ mode }) => {
+  const plugins = [
     vue(),
-    VueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  },
-  build: {
-    rollupOptions: {
-      external: ['nprogress/nprogress.css']
-    }
+  ];
+
+  if (mode === 'development') {
+    plugins.push(VueDevTools());
   }
-})
+
+  return {
+    base: '/',
+    plugins: plugins,
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url))
+      }
+    },
+    build: {
+      rollupOptions: {
+        external: ['nprogress/nprogress.css']
+      }
+    }
+  };
+});

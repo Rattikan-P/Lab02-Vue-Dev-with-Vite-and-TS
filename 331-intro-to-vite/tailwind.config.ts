@@ -19,7 +19,7 @@ export default {
       keyframes: {
         yellowFade: {
           '0%': {backgroundColor: 'yellow'},
-          '100%': {backgrounColor: 'transparent'},
+          '100%': {backgroundColor: 'transparent'},
         },
       },
     },
