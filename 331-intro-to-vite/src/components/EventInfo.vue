@@ -8,14 +8,15 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="event-info">
-    <span class="category">{{ props.category }}</span>
-    <span class="organizer">{{ props.organizer }}</span>
-  </div>
+  <div class="flex flex-col items-end mt-[10px]">
+  <!-- items-end: เรียง items ไปทางขวา (เalign-items: flex-end;) -->
+  <span class="text-[14px] mb-[5px]">{{ props.category }}</span>
+  <span class="text-[14px] mb-[5px]">{{ props.organizer }}</span>
+</div>
 </template>
 
 <style scoped>
-.event-info {
+/* .event-info {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -26,5 +27,5 @@ const props = defineProps<{
 .organizer {
   font-size: 14px;
   margin-bottom: 5px;
-}
+} */
 </style>

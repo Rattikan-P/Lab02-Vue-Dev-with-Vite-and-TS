@@ -29,11 +29,14 @@ const register = () => {
 
 <template>
   <p>Register event here</p>
-  <button @click="register">Register Me!</button>
+  <button @click="register"
+        class="mt-4 px-4 py-2 bg-[#42b983] text-white border-none rounded cursor-pointer text-base hover:bg-[#369b74]">
+    Register Me!
+</button>
 </template>
 
 <style>
-button {
+/* button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #42b983;
@@ -46,4 +49,5 @@ button {
 
 button:hover {
   background-color: #369b74;
-}</style>
+} */
+</style>

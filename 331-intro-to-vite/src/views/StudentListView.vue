@@ -20,15 +20,15 @@ onMounted(() => {
 
 <template>
   <h1>Our Students</h1>
-  <div class="student">
+  <div class="flex flex-col items-center">
     <EventStudent v-for="student in students" :key="student.id" :student="student" />
   </div>
 </template>
 
 <style scoped>
-.student {
+/* .student {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
+} */
 </style>

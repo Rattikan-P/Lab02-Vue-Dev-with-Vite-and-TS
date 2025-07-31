@@ -6,3 +6,7 @@ h1 {
     /* ทำให้ทุกๆ <h1> ใน HTML ที่มีขนาดฟอนต์ 4xl และมี margin-buttom 2rem (32px) โดยไม่ต้องเพิ่มคลาส text-4xl และ mb-8 ใน HTML โดยตรง */
     @apply text-4xl mb-8
 }
+
+h3 {
+    @apply text-lg leading-relaxed mt-4;
+}

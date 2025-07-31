@@ -25,11 +25,14 @@ const edit = () => {
 
 <template>
   <p>Edit event here</p>
-  <button @click="edit">Edit Me!</button>
+  <button @click="edit"
+        class="mt-4 px-4 py-2 bg-[#42b983] text-white border-none rounded cursor-pointer text-base hover:bg-[#369b74]">
+    Edit Me!
+</button>
 </template>
 
 <style>
-button {
+/* button {
   margin-top: 1rem;
   padding: 0.5rem 1rem;
   background-color: #42b983;
@@ -42,5 +45,5 @@ button {
 
 button:hover {
   background-color: #369b74;
-}
+} */
 </style>
