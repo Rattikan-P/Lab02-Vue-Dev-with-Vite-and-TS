@@ -9,7 +9,6 @@ import StudentListView from '../views/StudentListView.vue'
 import NotFoundView from '@/views/NotFound.vue'
 import NetworkErrorView from '@/views/NetworkErrorView.vue'
 import nProgress from 'nprogress'
-import('nprogress/nprogress.css')
 import EventService from '@/services/EventService'
 import { useEventStore } from '@/stores/event'
 
@@ -108,12 +107,13 @@ const router = createRouter({
     }
   }
 })
-  router.beforeEach(async () => {
-  await import('nprogress/nprogress.css')
-  nProgress.start()
-})
+  router.beforeEach(() => {
+  console.log('Starting Progress...');
+  nProgress.start();
+});
 
-  router.afterEach(() => {
-    nProgress.done()
-  })
+router.afterEach(() => {
+  console.log('Progress Done!');
+  nProgress.done();
+});
 export default router
