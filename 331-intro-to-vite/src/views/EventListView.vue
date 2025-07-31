@@ -9,8 +9,7 @@ const events = ref<Event[] | null>(null)
 const router = useRouter
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
-  const totalPages = Math.ceil(totalEvents.value / 3) //ceil -> ปัดเศษขึ้น
-  // const totalPages = Math.ceil(totalEvents.value / pageSize.value)
+  const totalPages = Math.ceil(totalEvents.value / pageSize.value)
   return page.value < totalPages
 })
 const props = defineProps({
@@ -30,8 +29,7 @@ const pageSize = computed(() => props.pageSize)
 onMounted(() => {
   watchEffect(() => {
     // events.value = null
-    EventService.getEvents(3, page.value)
-    // EventService.getEvents(pageSize.value, page.value)
+    EventService.getEvents(pageSize.value, page.value)
       .then((response) => {
         events.value = response.data
         totalEvents.value = response.headers['x-total-count']
@@ -45,77 +43,38 @@ onMounted(() => {
 
 <template>
   <h1>Events For Good</h1>
-  <!-- new element-->
   <div class="flex flex-col items-center">
     <EventCard v-for="event in events" :key="event.id" :event="event" />
   </div>
   <div class="page-info">
-      Page {{ page }} of {{ Math.ceil(totalEvents / 3) }}
-      <!-- Page {{ page }} of {{ Math.ceil(totalEvents / props.pageSize) }} -->
+      Page {{ page }} of {{ Math.ceil(totalEvents / props.pageSize) }}
     </div>
-  <div class="page-size-links">
-    <!-- <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 2 } }">2</RouterLink> |
-    <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 4 } }">4</RouterLink> |
-    <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 6 } }">6</RouterLink> -->
-    <h1>🦛</h1>
+  <div class="my-[20px] text-center text-base font-medium text-[#2c3e50]">
+    <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 2 } }"
+                class="inline-block mx[6px] px-[14px] py-[6px] bg-[#42b983] text-white rounded-full no-underline font-bold hover:bg-[#2c3e50]">2</RouterLink> |
+    <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 4 } }"
+                class="inline-block mx-[6px] px-[14px] py-[6px] bg-[#42b983] text-white rounded-full no-underline font-bold hover:bg-[#2c3e50]">4</RouterLink> |
+    <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 6 } }"
+                class="inline-block mx-[6px] px-[14px] py-[6px] bg-[#42b983] text-white rounded-full no-underline font-bold hover:bg-[#2c3e50]">6</RouterLink>
   </div>
-  <div class="pagination">
+  <div class="flex w-[290px] mx-auto">
     <RouterLink
-      id="page-prev"
-      :to="{ name: 'event-list-view', query: { page: page - 1, pageSize: pageSize } }"
-      rel="prev"
-      v-if="page != 1"
-      >&#60; Prev Page</RouterLink
-    >
+    id="page-prev"
+    :to="{ name: 'event-list-view', query: { page: page - 1, pageSize: pageSize } }"
+    rel="prev"
+    v-if="page != 1"
+    class="flex-1 text-left no-underline text-[#2c3e50] hover:underline"
+    >&#60; Prev Page</RouterLink>
     <RouterLink
-      id="page-next"
-      :to="{ name: 'event-list-view', query: { page: page + 1, pageSize: pageSize } }"
-      rel="next"
-      v-if="hasNextPage"
-      >Next Page &#62;</RouterLink
-    >
-  </div>
+    id="page-next"
+    :to="{ name: 'event-list-view', query: { page: page + 1, pageSize: pageSize } }"
+    rel="next"
+    v-if="hasNextPage"
+    class="flex-1 text-right no-underline text-[#2c3e50] hover:underline"
+    >Next Page &#62;</RouterLink>
+</div>
 </template>
 
 <style scoped>
-.pagination {
-  display: flex;
-  width: 290px;
-  margin: 0 auto;
-}
-.pagination a {
-  flex: 1;
-  text-decoration: none;
-  color: #2c3e50;
-}
-.pagination a:hover {
-  text-decoration: underline;
-}
-#page-prev {
-  text-align: left;
-}
-#page-next {
-  text-align: right;
-}
-.page-size-links {
-  margin: 20px auto;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 500;
-  color: #2c3e50;
-}
 
-.page-size-links a {
-  display: inline-block;
-  margin: 0 6px;
-  padding: 6px 14px;
-  background-color: #42b983;
-  color: white;
-  border-radius: 20px;
-  text-decoration: none;
-  font-weight: bold;
-}
-.page-size-links a:hover {
-  background-color: #2c3e50;
-}
 </style>
