@@ -3,11 +3,13 @@ import { RouterLink, RouterView } from 'vue-router'
 import EventCard from './components/EventCard.vue'
 import { useMessageStore } from './stores/message';
 import { storeToRefs } from 'pinia';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 const store = useMessageStore()
 const { message } = storeToRefs(store)
 </script>
 
 <template>
+  <SpeedInsights />
   <!-- 3.3 -->
   <div class="text-center font-sans text-gray-700 antialias"> 
     <header>
@@ -16,7 +18,7 @@ const { message } = storeToRefs(store)
       </div>
 
       <h1>Deploy with Vercel</h1>
-      
+
       <div class="wrapper">
         <nav class="py-6">
           <!-- py-6 เพิ่ม padding 24px บน-ล่างของ(top-bottom) element -->
