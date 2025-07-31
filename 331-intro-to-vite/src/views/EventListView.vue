@@ -10,6 +10,7 @@ const router = useRouter
 const totalEvents = ref(0)
 const hasNextPage = computed(() => {
   const totalPages = Math.ceil(totalEvents.value / 3) //ceil -> ปัดเศษขึ้น
+  // const totalPages = Math.ceil(totalEvents.value / pageSize.value)
   return page.value < totalPages
 })
 const props = defineProps({
@@ -30,6 +31,7 @@ onMounted(() => {
   watchEffect(() => {
     // events.value = null
     EventService.getEvents(3, page.value)
+    // EventService.getEvents(pageSize.value, page.value)
       .then((response) => {
         events.value = response.data
         totalEvents.value = response.headers['x-total-count']
@@ -49,6 +51,7 @@ onMounted(() => {
   </div>
   <div class="page-info">
       Page {{ page }} of {{ Math.ceil(totalEvents / 3) }}
+      <!-- Page {{ page }} of {{ Math.ceil(totalEvents / props.pageSize) }} -->
     </div>
   <div class="page-size-links">
     <!-- <RouterLink :to="{ name: 'event-list-view', query: { page: 1, pageSize: 2 } }">2</RouterLink> |
