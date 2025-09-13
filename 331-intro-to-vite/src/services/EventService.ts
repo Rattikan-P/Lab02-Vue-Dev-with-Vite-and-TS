@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8080', 
+  baseURL: import.meta.env.VITE_BACKEND_URL,
   withCredentials: false,
   headers: {
     Accept: 'application/json',
@@ -11,9 +11,12 @@ const apiClient = axios.create({
 
 export default {
   getEvents(perPage: Number, page: Number) {
-    return apiClient.get('events?_limit=' + perPage + '&_page=' + page)
+    return apiClient.get('/events?_limit=' + perPage + '&_page=' + page)
   },
-  getEvent(id: Number) {
+  getEvent(id: number) {
     return apiClient.get('/events/' + id)
   },
+  saveEvent(event: Event) {
+    return apiClient.post('events', event)
+  }
 }
